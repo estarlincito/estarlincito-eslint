@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import unusedImports from 'eslint-plugin-unused-imports';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 //import tseslint from "typescript-eslint";
 
 // @ts-ignore
@@ -44,6 +45,7 @@ export const baseConfig: Linter.Config = [
     },
     plugins: {
       safeguard,
+      'simple-import-sort': simpleImportSort,
       'sort-keys-fix': sortKeys,
       'unused-imports': unusedImports,
     },
