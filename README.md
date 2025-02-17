@@ -1,78 +1,109 @@
 # @estarlincito/eslint
 
-A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.
+`@estarlincito/eslint` is a flexible ESLint configuration package that provides multiple pre-configured setups for different project types. It includes:
 
-## 🚀 Features
+- **`baseConfig`**: A general-purpose ESLint setup for JavaScript and TypeScript projects.
+- **`nextJsConfig`**: An extended configuration optimized for Next.js applications.
 
-- Comprehensive TypeScript linting with `@typescript-eslint/recommended`.
-- Integration with Prettier for automatic formatting via `plugin:prettier/recommended`.
-- Strong import validation with `plugin:import`.
-- Safeguard plugin to prevent raw errors and enforce try-catch blocks.
-- Rule enforcement for cleaner, more maintainable code:
-  - No unused variables or imports.
-  - No console logs or debuggers.
-  - Prefer `const` and `let` over `var`.
-  - Enforce object shorthand, template literals, and arrow callbacks.
+## 🛠 Available configurations
 
-## 📦 Installation
+### 🔹 [baseConfig](/docs/base.md)
+
+### 🔹 [nextJsConfig](/docs/next-js.md)
+
+## 📌 Features
+
+- **Multiple configurations** tailored for different use cases.
+- **Extends best practices** with `@typescript-eslint`, `prettier`, `import`, and more.
+- **Includes essential plugins** like `safeguard`, `sort-keys-fix`, and `unused-imports`.
+- **Ensures clean, maintainable, and performant code**.
+
+## 🚀 Installation
 
 Install the package using `pnpm`, `npm`, or `yarn`:
 
-```sh
-pnpm add @estarlincito/eslint
-# or
-npm install @estarlincito/eslint
-# or
-yarn add @estarlincito/eslint
+```bash
+pnpm add -D eslint @estarlincito/eslint
+```
+
+```bash
+npm install --save-dev eslint @estarlincito/eslint
+```
+
+```bash
+yarn add -D eslint @estarlincito/eslint
 ```
 
 ## 🛠 Configuration
 
-To use this ESLint configuration, create an `eslint.config.js` file and extend the configuration:
+You can choose the appropriate configuration based on your project needs.
 
-```js
-import eslintConfig from '@estarlincito/eslint';
+### Base Configuration
 
-export default eslintConfig;
+For JavaScript or TypeScript projects, use `baseConfig`:
+
+<!-- #### `.eslintrc.js`
+
+```ts
+module.exports = {
+  extends: '@estarlincito/eslint',
+};
+``` -->
+
+#### Flat Config Setup `eslint.config.js`
+
+```ts
+import { baseConfig } from '@estarlincito/eslint';
+
+export default baseConfig;
 ```
 
-This will apply the rules and plugins defined in the `@estarlincito/eslint` configuration to your project.
+### Next.js Configuration
 
-## 🛠 Available Utilities
+For Next.js projects, use `nextJsConfig`:
 
-### 🔹 [apiFetch](/docs/api-fetch.md)
+#### `.eslintrc.js`
 
-<!-- ## 📝 Rules Overview
+```ts
+module.exports = {
+  extends: '@estarlincito/eslint',
+};
+```
 
-Here’s a list of key rules included in the configuration:
+#### Flat Config Setup
 
-### 🔹 TypeScript Rules
+```ts
+import { nextJsConfig } from '@estarlincito/eslint';
 
-- `@typescript-eslint/no-unused-vars`: Warn on unused variables.
-- `@typescript-eslint/no-explicit-any`: Avoid the `any` type.
+export default nextJsConfig;
+```
 
-### 🔹 General Rules
+## ⚡ Usage
 
-- `consistent-return`: Enforce consistency in return statements.
-- `eqeqeq`: Require strict equality (`===`).
-- `no-console`: Warn about console log usage.
-- `no-debugger`: Warn about debugger statements.
-- `no-duplicate-imports`: Prevent duplicate imports.
-- `no-var`: Enforce usage of `let` and `const` instead of `var`.
-- `object-shorthand`: Enforce object shorthand syntax.
+Run ESLint with your package manager:
 
-### 🔹 Import Rules
+```bash
+pnpm eslint .
+```
 
-- `import/no-unresolved`: Ensure that imports are resolvable.
-- `sort-keys-fix/sort-keys-fix`: Automatically fix object key order.
+```bash
+npm run eslint .
+```
 
-### 🔹 Plugin Rules
+```bash
+yarn eslint .
+```
 
-- `safeguard/no-raw-error`: Warn about raw error usage.
-- `unused-imports/no-unused-imports`: Remove unused imports automatically. -->
+## 🛠 How It Works
+
+- **`baseConfig`**: Ensures general best practices for JavaScript and TypeScript.
+- **`nextJsConfig`**: Builds upon `baseConfig` and adds Next.js optimizations.
+- Uses `prettier` for formatting consistency.
+- Detects unused imports automatically with `unused-imports`.
+- Enforces better error handling using `safeguard`.
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
 
 **Author:** Estarlin R ([estarlincito.com](https://estarlincito.com))

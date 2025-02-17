@@ -1,7 +1,7 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.0",
+  "version": "1.2.0",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -57,25 +57,28 @@
   "engines": {
     "node": "^23"
   },
-  "devDependencies": {},
   "dependencies": {
-    "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "@eslint/compat": "^1.2.6",
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.20.0",
-    "@types/eslint__eslintrc": "^2.1.2",
-    "@types/node": "^22.13.1",
-    "@typescript-eslint/eslint-plugin": "^8.23.0",
-    "@typescript-eslint/parser": "^8.24.0",
-    "@typescript-eslint/utils": "^8.23.0",
+    "typescript-eslint": "^8.24.0",
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-safeguard": "^2.0.3",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "@eslint/compat": "^1.2.6",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.20.0",
     "globals": "^15.15.0",
     "prettier": "^3.4.2",
-    "typescript": "^5.0.0"
+    "@next/eslint-plugin-next": "^15.1.6",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__eslintrc": "^2.1.2",
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3"
   }
 }

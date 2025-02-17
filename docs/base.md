@@ -1,70 +1,91 @@
-# @estarlincito/eslint \ Base
+# @estarlincito/eslint: baseConfig
 
 A comprehensive ESLint configuration package for JavaScript and TypeScript projects that enforces best practices and coding standards.
 
 ## 📌 Features
 
-- TypeScript linting with `@typescript-eslint/recommended`.
-- Prettier integration via `plugin:prettier/recommended` for automatic formatting.
-- Import validation using `plugin:import`.
-- Safeguard plugin to prevent raw errors and ensure try-catch blocks.
-- Unused imports and variables management with `eslint-plugin-unused-imports`.
-- Object key sorting and consistency with `eslint-plugin-sort-keys-fix`.
-- Strong rules to prevent common mistakes, like no console logs, no duplicate imports, and enforcing `const`/`let` usage over `var`.
+- **Pre-configured ESLint setup** for TypeScript and JavaScript projects.
+- **Integrates best practices** with plugins like `@typescript-eslint`, `prettier`, `import`, and more.
+- **Ensures code consistency** with `sort-keys-fix` and `unused-imports`.
+- **Encourages clean code** with `safeguard` rules to avoid raw errors and enforce try-catch usage.
 
 ## 🚀 Installation
 
 Install the package using `pnpm`, `npm`, or `yarn`:
 
-```sh
-pnpm add @estarlincito/eslint
-# or
-npm install @estarlincito/eslint
-# or
-yarn add @estarlincito/eslint
+```bash
+pnpm add -D eslint @estarlincito/eslint
+```
+
+```bash
+npm install --save-dev eslint @estarlincito/eslint
+```
+
+```bash
+yarn add -D eslint @estarlincito/eslint
 ```
 
 ## 🛠 Configuration
 
-To use this ESLint configuration, create an `eslint.config.js` file and extend the configuration:
+<!-- Create an `.eslintrc.js` file in your project's root and extend from `@estarlincito/eslint`:
 
 ```js
-import eslintConfig from '@estarlincito/eslint';
+module.exports = {
+  extends: '@estarlincito/eslint',
+};
+``` -->
 
-export default eslintConfig;
+Create an `eslint.config.js` file in your Next.js project's root and import from `baseConfig`:
+
+```js
+import { baseConfig } from '@estarlincito/eslint';
+
+export default baseConfig;
 ```
-
-This will apply the rules and plugins defined in the `@estarlincito/eslint` configuration to your project.
 
 ## ⚡ Usage
 
-This ESLint configuration enforces a range of best practices to improve code readability, maintainability, and consistency across JavaScript and TypeScript projects.
+Run ESLint with your package manager:
+
+```bash
+pnpm eslint .
+```
+
+```bash
+npm run eslint .
+```
+
+```bash
+yarn eslint .
+```
 
 ## ❌ Incorrect Code
 
-```tsx
-import { fetchData as getData } from './api'; // Renaming import is not allowed
-
-let message = 'Hello'; // 'let' should be avoided, use 'const' instead
+```js
+const x = 10;
+if (x == '10') {
+  console.log('Loose comparison');
+}
 ```
 
 ## ✅ Correct Code
 
-```tsx
-import fetchData from './api'; // Matches the exported name
-
-const message = 'Hello'; // Use 'const' for variables that do not change
+```js
+const x = 10;
+if (x === 10) {
+  console.log('Strict comparison');
+}
 ```
 
 ## 🛠 How It Works
 
-This ESLint configuration integrates several plugins and rules to enforce consistent and clean coding practices:
-
-- TypeScript rules are applied with `@typescript-eslint/recommended`.
-- Prettier ensures code is consistently formatted.
-- Safeguard enforces error handling and prevents raw errors.
-- Unused imports and variables are flagged using `eslint-plugin-unused-imports`.
-- Object key order and other formatting issues are automatically fixed with `eslint-plugin-sort-keys-fix`.
+- Uses `@eslint/js` and `@eslint/compat` for modern ESLint compatibility.
+- Integrates TypeScript, Prettier, and Import rules.
+- Enforces best practices such as:
+  - No unused imports or variables (`unused-imports`).
+  - No console logs in production (`no-console`).
+  - Consistent return statements (`consistent-return`).
+  - Sorted object keys (`sort-keys-fix`).
 
 ## 📝 License
 

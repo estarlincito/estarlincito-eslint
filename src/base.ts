@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import js from '@eslint/js';
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -7,7 +8,10 @@ import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import unusedImports from 'eslint-plugin-unused-imports';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
+//import tseslint from "typescript-eslint";
+
 // @ts-ignore
 import sortKeys from 'eslint-plugin-sort-keys-fix';
 
@@ -19,18 +23,19 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
 });
-
-export const base: Linter.Config[] = [
+// @ts-ignore
+export const baseConfig: Linter.Config = [
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
   ...fixupConfigRules(
     compat.extends(
-      'plugin:@typescript-eslint/recommended',
       'plugin:prettier/recommended',
       'plugin:import/typescript',
       'plugin:import/recommended',
     ) as Linter.Config,
   ),
   {
-    //files: ['src/**/*.ts'],
     languageOptions: {
       globals: {
         ...globals.browser,
