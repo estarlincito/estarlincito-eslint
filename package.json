@@ -1,0 +1,81 @@
+{
+  "name": "@estarlincito/eslint",
+  "type": "module",
+  "version": "1.0",
+  "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "git": "read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push && rm -rf dist && pnpm tsc && npm publish --access public"
+  },
+  "keywords": [
+    "estarlincito-eslint",
+    "eslint",
+    "javascript",
+    "typescript",
+    "nodejs",
+    "eslint-config",
+    "best-practices",
+    "code-quality",
+    "linting",
+    "typescript-eslint",
+    "prettier",
+    "import-plugin",
+    "unused-imports",
+    "safeguard",
+    "sort-keys",
+    "coding-standards",
+    "automated-formatting",
+    "error-handling",
+    "eslint-rules",
+    "ts-linting",
+    "javascript-linting",
+    "node-linting"
+  ],
+  "author": {
+    "name": "Estarlin R",
+    "email": "dev@estarlincito.com",
+    "url": "https://estarlincito.com"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "docs"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/estarlincito/estarlincito-eslint#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estarlincito/estarlincito-eslint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/estarlincito/estarlincito-eslint/issues"
+  },
+  "engines": {
+    "node": "^23"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "@eslint/compat": "^1.2.6",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.20.0",
+    "@types/eslint__eslintrc": "^2.1.2",
+    "@types/node": "^22.13.1",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "@typescript-eslint/utils": "^8.23.0",
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-safeguard": "^2.0.3",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^15.15.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.0.0"
+  }
+}
