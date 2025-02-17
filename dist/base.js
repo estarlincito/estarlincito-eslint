@@ -6,9 +6,9 @@ import safeguard from 'eslint-plugin-safeguard';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import tseslint from 'typescript-eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import tseslint from 'typescript-eslint';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 //import tseslint from "typescript-eslint";
 // @ts-ignore
@@ -43,8 +43,8 @@ export const baseConfig = [
             '@typescript-eslint/no-unused-vars': 'warn',
             'consistent-return': 'error',
             eqeqeq: 'error',
-            'import/no-unresolved': 'off', //check this with js files
-            //*
+            'import/no-unresolved': 'off',
+            //check this with js files
             'max-len': ['off', { code: 80 }],
             'no-console': 'warn',
             'no-debugger': 'warn',
@@ -59,6 +59,8 @@ export const baseConfig = [
             'prefer-template': 'error',
             'safeguard/no-raw-error': 'warn',
             'safeguard/trycatch-ensurer': 'off',
+            'simple-import-sort/exports': 'error',
+            'simple-import-sort/imports': 'error',
             'sort-keys': 'off',
             'sort-keys-fix/sort-keys-fix': [
                 'warn',
