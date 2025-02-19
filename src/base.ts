@@ -1,21 +1,20 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import js from '@eslint/js';
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import { Linter } from 'eslint';
-import safeguard from 'eslint-plugin-safeguard';
-import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import tseslint from 'typescript-eslint';
-import unusedImports from 'eslint-plugin-unused-imports';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
+import { fixupConfigRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import { Linter } from 'eslint';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import safeguard from 'eslint-plugin-safeguard';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 //import tseslint from "typescript-eslint";
-
 // @ts-ignore
 import sortKeys from 'eslint-plugin-sort-keys-fix';
+import unusedImports from 'eslint-plugin-unused-imports';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,12 +37,31 @@ export const baseConfig: Linter.Config = [
     ) as Linter.Config,
   ),
   {
+    ignores: ['node_modules'],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.es2025,
       },
+
+      // parserOptions: {
+      //   projectService: true,
+      // },
+
+      // parserOptions: {
+      //   ecmaVersion: 2024,
+      //   project: './tsconfig.json',
+      //   sourceType: 'module',
+      // },
     },
+
+    // settings: {
+    //   'import/resolver': {
+    //     typescript: true,
+    //     node: true,
+    //   },
+    // },
     plugins: {
       safeguard,
       'simple-import-sort': simpleImportSort,

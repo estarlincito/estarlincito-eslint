@@ -1,14 +1,14 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
-    "git": "read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push && rm -rf dist && pnpm tsc && npm publish --access public"
+    "git": "rm -rf dist && pnpm tsc && read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push && npm publish --access public"
   },
   "keywords": [
     "estarlincito-eslint",
