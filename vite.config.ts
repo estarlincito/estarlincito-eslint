@@ -27,7 +27,7 @@ export default defineConfig({
   build: {
     ssr: true,
     lib: {
-      entry: entry,
+      entry,
     },
     minify: false,
     target: 'esnext',

@@ -42,21 +42,7 @@ const baseConfig = [
         ...globals.node,
         ...globals.es2025
       }
-      // parserOptions: {
-      //   projectService: true,
-      // },
-      // parserOptions: {
-      //   ecmaVersion: 2024,
-      //   project: './tsconfig.json',
-      //   sourceType: 'module',
-      // },
     },
-    // settings: {
-    //   'import/resolver': {
-    //     typescript: true,
-    //     node: true,
-    //   },
-    // },
     plugins: {
       safeguard,
       "simple-import-sort": simpleImportSort,
