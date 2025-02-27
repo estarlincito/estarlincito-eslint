@@ -84,11 +84,9 @@ export const baseConfig: Linter.Config = [
 
       'no-else-return': 'error',
 
-      'no-self-assign': ['error', { props: true }],
-
       'no-undef': 'error',
-      'no-unreachable': 'error',
 
+      'no-unreachable': 'error',
       'no-unused-labels': 'error',
 
       'no-var': 'error',
@@ -100,6 +98,8 @@ export const baseConfig: Linter.Config = [
       'prefer-template': 'error',
 
       'safeguard/no-raw-error': 'warn',
+
+      'safeguard/no-self-assignments': 'error',
 
       'safeguard/trycatch-ensurer': 'off',
 
