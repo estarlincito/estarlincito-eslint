@@ -1,12 +1,19 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "types": "dist/esm/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm vite build",
     "lint": "eslint .",
     "git": "rm -rf dist && pnpm tsc && read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push && npm publish --access public"
   },
@@ -80,6 +87,13 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__eslintrc": "^2.1.2",
     "@types/node": "^22.13.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

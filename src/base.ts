@@ -84,6 +84,8 @@ export const baseConfig: Linter.Config = [
 
       'no-else-return': 'error',
 
+      'no-self-assign': ['error', { props: true }],
+
       'no-undef': 'error',
       'no-unreachable': 'error',
 
