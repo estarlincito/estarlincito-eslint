@@ -34,6 +34,7 @@ export const baseConfig: Linter.Config = [
       'plugin:prettier/recommended',
       'plugin:import/typescript',
       'plugin:import/recommended',
+      'prettier',
     ) as Linter.Config,
   ),
   {

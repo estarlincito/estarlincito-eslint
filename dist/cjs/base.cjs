@@ -31,7 +31,8 @@ const baseConfig = [
     compat.extends(
       "plugin:prettier/recommended",
       "plugin:import/typescript",
-      "plugin:import/recommended"
+      "plugin:import/recommended",
+      "prettier"
     )
   ),
   {
