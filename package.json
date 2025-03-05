@@ -1,7 +1,7 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "types": "./dist/esm/index.d.ts",
   "main": "./dist/esm/index.mjs",
@@ -66,7 +66,7 @@
   "bugs": {
     "url": "https://github.com/estarlincito/estarlincito-eslint/issues"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@eslint/compat": "^1.2.7",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.21.0",
