@@ -49,7 +49,7 @@ const baseConfig = [
       "@typescript-eslint/no-unused-vars": "warn",
       "consistent-return": "error",
       eqeqeq: "error",
-      "import/no-unresolved": "off",
+      "import/no-unresolved": "error",
       //check this with js files
       "max-len": ["off", { code: 80 }],
       "no-console": "warn",

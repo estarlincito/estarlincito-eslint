@@ -1,7 +1,7 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "types": "./dist/esm/index.d.ts",
   "main": "./dist/esm/index.mjs",

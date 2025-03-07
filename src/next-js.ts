@@ -2,6 +2,7 @@
 
 // @ts-ignore
 // @ts-ignore
+
 import pluginNext from '@next/eslint-plugin-next';
 import { Linter } from 'eslint';
 import pluginReact from 'eslint-plugin-react';
