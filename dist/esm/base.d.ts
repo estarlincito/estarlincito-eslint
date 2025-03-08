@@ -1,2 +1,2 @@
-import { Linter } from 'eslint';
-export declare const baseConfig: Linter.Config;
+import { default as tseslint } from 'typescript-eslint';
+export declare const baseConfig: tseslint.ConfigArray;

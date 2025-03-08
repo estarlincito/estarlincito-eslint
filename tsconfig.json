@@ -6,7 +6,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist/types",
-    "rootDir": "src",
+    "rootDir": ".",
     "emitDeclarationOnly": true,
     "strict": true,
     "esModuleInterop": true,
@@ -14,6 +14,6 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts", "eslint.config.js"],
+  "include": ["src/**/*.ts", "eslint.config.js", "vite.config.ts"],
   "exclude": ["node_modules"]
 }

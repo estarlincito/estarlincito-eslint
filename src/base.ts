@@ -1,43 +1,28 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import { Linter } from 'eslint';
+import eslint from '@eslint/js';
+import parser from '@typescript-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier';
+// @ts-ignore
+import Import from 'eslint-plugin-import';
+import prettierPlugin from 'eslint-plugin-prettier';
 import safeguard from 'eslint-plugin-safeguard';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-//import tseslint from "typescript-eslint";
 // @ts-ignore
 import sortKeys from 'eslint-plugin-sort-keys-fix';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
-// @ts-ignore
-export const baseConfig: Linter.Config = [
-  js.configs.recommended,
+export const baseConfig: tseslint.ConfigArray = tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
   eslintConfigPrettier,
-  ...tseslint.configs.recommended,
-  ...fixupConfigRules(
-    compat.extends(
-      'plugin:prettier/recommended',
-      'plugin:import/typescript',
-      'plugin:import/recommended',
-      'prettier',
-    ) as Linter.Config,
-  ),
+  Import.flatConfigs.recommended,
+
   {
+    files: ['**/*.ts', '**/*.tsx'],
     ignores: ['node_modules'],
     languageOptions: {
       globals: {
@@ -45,9 +30,16 @@ export const baseConfig: Linter.Config = [
         ...globals.node,
         ...globals.es2025,
       },
+      parser,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: process.cwd(),
+        // sourceType: 'module',
+        // ecmaVersion: 'latest',
+      },
     },
-
     plugins: {
+      prettier: prettierPlugin,
       safeguard,
       'simple-import-sort': simpleImportSort,
       'sort-keys-fix': sortKeys,
@@ -72,8 +64,8 @@ export const baseConfig: Linter.Config = [
       'no-undef': 'error',
 
       'no-unreachable': 'error',
-      'no-unused-labels': 'error',
 
+      'no-unused-labels': 'error',
       'no-var': 'error',
 
       'object-shorthand': 'error',
@@ -81,7 +73,7 @@ export const baseConfig: Linter.Config = [
       'prefer-arrow-callback': 'error',
 
       'prefer-template': 'error',
-
+      'prettier/prettier': 'error',
       'safeguard/no-raw-error': 'warn',
 
       'safeguard/no-self-assignments': 'error',
@@ -110,5 +102,14 @@ export const baseConfig: Linter.Config = [
         },
       ],
     },
+    settings: {
+      'import/resolver': {
+        node: true,
+        typescript: {
+          alwaysTryTypes: true,
+          project: true,
+        },
+      },
+    },
   },
-];
+);

@@ -2,12 +2,11 @@
 
 Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 
-const path = require('node:path');
-const node_url = require('node:url');
-const compat$1 = require('@eslint/compat');
-const eslintrc = require('@eslint/eslintrc');
-const js = require('@eslint/js');
+const eslint = require('@eslint/js');
+const parser = require('@typescript-eslint/parser');
 const eslintConfigPrettier = require('eslint-config-prettier');
+const Import = require('eslint-plugin-import');
+const prettierPlugin = require('eslint-plugin-prettier');
 const safeguard = require('eslint-plugin-safeguard');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 const sortKeys = require('eslint-plugin-sort-keys-fix');
@@ -15,36 +14,32 @@ const unusedImports = require('eslint-plugin-unused-imports');
 const globals = require('globals');
 const tseslint = require('typescript-eslint');
 
-var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
-const __filename$1 = node_url.fileURLToPath((typeof document === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('base.cjs', document.baseURI).href)));
-const __dirname$1 = path.dirname(__filename$1);
-const compat = new eslintrc.FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname$1,
-  recommendedConfig: js.configs.recommended
-});
-const baseConfig = [
-  js.configs.recommended,
+const baseConfig = tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
   eslintConfigPrettier,
-  ...tseslint.configs.recommended,
-  ...compat$1.fixupConfigRules(
-    compat.extends(
-      "plugin:prettier/recommended",
-      "plugin:import/typescript",
-      "plugin:import/recommended",
-      "prettier"
-    )
-  ),
+  Import.flatConfigs.recommended,
   {
+    files: ["**/*.ts", "**/*.tsx"],
     ignores: ["node_modules"],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.es2025
+      },
+      parser,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: process.cwd()
+        // sourceType: 'module',
+        // ecmaVersion: 'latest',
       }
     },
     plugins: {
+      prettier: prettierPlugin,
       safeguard,
       "simple-import-sort": simpleImportSort,
       "sort-keys-fix": sortKeys,
@@ -68,6 +63,7 @@ const baseConfig = [
       "object-shorthand": "error",
       "prefer-arrow-callback": "error",
       "prefer-template": "error",
+      "prettier/prettier": "error",
       "safeguard/no-raw-error": "warn",
       "safeguard/no-self-assignments": "error",
       "safeguard/trycatch-ensurer": "off",
@@ -89,8 +85,17 @@ const baseConfig = [
           varsIgnorePattern: "^_"
         }
       ]
+    },
+    settings: {
+      "import/resolver": {
+        node: true,
+        typescript: {
+          alwaysTryTypes: true,
+          project: true
+        }
+      }
     }
   }
-];
+);
 
 exports.baseConfig = baseConfig;
