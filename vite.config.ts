@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+
 import fs from 'fs';
 import path from 'path';
 import { defineConfig } from 'vite';
@@ -12,8 +13,8 @@ const componentFiles = fs
 // Generate entry points dynamically
 const entry = componentFiles.reduce((acc: Record<string, string>, file) => {
   const name = path.basename(file, path.extname(file));
-  acc[name] = path.resolve(dir, file);
-  return acc;
+
+  return { ...acc, [name]: path.resolve(dir, file) };
 }, {});
 
 const dtsPlugin = dts({

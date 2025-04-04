@@ -46,36 +46,84 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'unused-imports': unusedImports,
     },
     rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/explicit-function-return-type': ['warn'],
+      '@typescript-eslint/explicit-module-boundary-types': ['warn'],
+      '@typescript-eslint/no-base-to-string': 'warn',
+      '@typescript-eslint/no-duplicate-type-constituents': 'warn',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-meaningless-void-operator': 'warn',
+      '@typescript-eslint/no-redundant-type-constituents': 'warn',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/prefer-find': 'warn',
+      '@typescript-eslint/prefer-includes': 'warn',
+      '@typescript-eslint/prefer-nullish-coalescing': 'warn',
+      '@typescript-eslint/prefer-optional-chain': 'warn',
+      '@typescript-eslint/prefer-readonly': 'warn',
+      '@typescript-eslint/require-array-sort-compare': 'warn',
+      '@typescript-eslint/restrict-template-expressions': 'warn',
+      '@typescript-eslint/switch-exhaustiveness-check': 'warn',
+      'arrow-body-style': ['warn', 'as-needed'],
       'consistent-return': 'error',
       eqeqeq: 'error',
       'import/no-unresolved': 'error',
-      //check this with js files
+
+      // check this with js files
       'max-len': ['off', { code: 80 }],
-
+      'no-await-in-loop': 'warn',
       'no-console': 'warn',
-
       'no-debugger': 'warn',
-
       'no-duplicate-imports': 'error',
-
       'no-else-return': 'error',
 
+      'no-eval': 'error',
+      'no-extend-native': 'error',
+      'no-implicit-coercion': 'warn',
+      'no-labels': 'error',
+
+      'no-lonely-if': 'warn',
+
+      'no-magic-numbers': ['warn', { ignore: [0, 1, -1] }],
+
+      'no-nested-ternary': 'warn',
+
+      'no-new-func': 'error',
+      'no-param-reassign': ['warn', { props: true }],
+
+      'no-plusplus': 'warn',
+
+      'no-redeclare': 'error',
+
+      'no-return-await': 'error',
+      'no-shadow': 'error',
       'no-undef': 'error',
-
       'no-unreachable': 'error',
-
       'no-unused-labels': 'error',
+      'no-useless-constructor': 'warn',
       'no-var': 'error',
-
       'object-shorthand': 'error',
+      'padding-line-between-statements': [
+        'warn',
+        { blankLine: 'always', next: 'return', prev: 'block' },
+        { blankLine: 'always', next: 'return', prev: 'const' },
+        { blankLine: 'always', next: 'function', prev: '*' },
+      ],
 
       'prefer-arrow-callback': 'error',
+      'prefer-destructuring': [
+        'warn',
+        {
+          array: false,
+          object: true,
+        },
+      ],
 
       'prefer-template': 'error',
+
       'prettier/prettier': 'error',
       'safeguard/no-raw-error': 'warn',
-
       'safeguard/no-self-assignments': 'error',
 
       'safeguard/trycatch-ensurer': 'off',
@@ -85,11 +133,13 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'simple-import-sort/imports': 'error',
 
       'sort-keys': 'off',
+
       'sort-keys-fix/sort-keys-fix': [
         'warn',
         'asc',
         { caseSensitive: false, natural: true },
       ],
+      'spaced-comment': ['warn', 'always'],
       'unused-imports/no-unused-imports': 'error',
 
       'unused-imports/no-unused-vars': [

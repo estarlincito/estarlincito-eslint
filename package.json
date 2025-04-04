@@ -1,7 +1,7 @@
 {
   "name": "@estarlincito/eslint",
   "type": "module",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "types": "./dist/esm/index.d.ts",
   "main": "./dist/esm/index.mjs",
@@ -18,7 +18,9 @@
     }
   },
   "scripts": {
-    "build": "eslint . && pnpm vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "build": "pnpm lint && pnpm vite build",
     "build:w": "vite build --watch",
     "git": "rm -rf dist && pnpm vite build && eslint . && read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push && npm publish --access public"
   },
