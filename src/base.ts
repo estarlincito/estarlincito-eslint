@@ -47,8 +47,6 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/explicit-function-return-type': ['warn'],
-      '@typescript-eslint/explicit-module-boundary-types': ['warn'],
       '@typescript-eslint/no-base-to-string': 'warn',
       '@typescript-eslint/no-duplicate-type-constituents': 'warn',
       '@typescript-eslint/no-floating-promises': 'error',
