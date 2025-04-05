@@ -79,7 +79,7 @@ const baseConfig = tseslint.config(
       "no-implicit-coercion": "warn",
       "no-labels": "error",
       "no-lonely-if": "warn",
-      "no-magic-numbers": ["warn", { ignore: [0, 1, -1] }],
+      "no-magic-numbers": ["warn"],
       "no-nested-ternary": "warn",
       "no-new-func": "error",
       "no-param-reassign": ["warn", { props: true }],

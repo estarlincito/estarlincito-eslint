@@ -83,7 +83,7 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
 
       'no-lonely-if': 'warn',
 
-      'no-magic-numbers': ['warn', { ignore: [0, 1, -1] }],
+      'no-magic-numbers': ['warn'],
 
       'no-nested-ternary': 'warn',
 
