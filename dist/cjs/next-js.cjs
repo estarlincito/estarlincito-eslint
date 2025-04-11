@@ -11,6 +11,7 @@ const nextJsConfig = [
   // @ts-ignore
   ...base.baseConfig,
   { ignores: [".next"] },
+  { files: ["next-env.d.ts"], rules: { "spaced-comment": ["off"] } },
   {
     ...pluginReact.configs.flat.recommended,
     languageOptions: {
