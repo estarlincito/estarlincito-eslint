@@ -66,6 +66,7 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'arrow-body-style': ['warn', 'as-needed'],
       'consistent-return': 'error',
       eqeqeq: 'error',
+      'import/no-extraneous-dependencies': 'warn',
       'import/no-unresolved': 'error',
 
       // check this with js files
@@ -158,6 +159,21 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
           project: true,
         },
       },
+    },
+  },
+
+  {
+    // Force using only "dependencies" inside src/
+    files: ['src/**/*.{ts,tsx,js,jsx}'],
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: false,
+          optionalDependencies: false,
+          peerDependencies: false,
+        },
+      ],
     },
   },
 );

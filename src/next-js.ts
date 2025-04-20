@@ -4,7 +4,7 @@
 // @ts-ignore
 
 import pluginNext from '@next/eslint-plugin-next';
-import { type Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import pluginReact from 'eslint-plugin-react';
 // @ts-ignore
 import pluginReactHooks from 'eslint-plugin-react-hooks';
