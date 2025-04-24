@@ -84,8 +84,6 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
 
       'no-lonely-if': 'warn',
 
-      'no-magic-numbers': ['warn'],
-
       'no-nested-ternary': 'warn',
 
       'no-new-func': 'error',
