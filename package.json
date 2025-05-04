@@ -1,6 +1,6 @@
 {
   "name": "@estarlincito/eslint",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "keywords": [
     "estarlincito-eslint",

@@ -68,7 +68,6 @@ const baseConfig = tseslint.config(
       "arrow-body-style": ["warn", "as-needed"],
       "consistent-return": "error",
       eqeqeq: "error",
-      "import/no-extraneous-dependencies": "warn",
       "import/no-unresolved": "error",
       // check this with js files
       "max-len": ["off", { code: 80 }],

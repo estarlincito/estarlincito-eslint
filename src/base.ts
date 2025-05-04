@@ -67,7 +67,6 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'arrow-body-style': ['warn', 'as-needed'],
       'consistent-return': 'error',
       eqeqeq: 'error',
-      'import/no-extraneous-dependencies': 'warn',
       'import/no-unresolved': 'error',
 
       // check this with js files
