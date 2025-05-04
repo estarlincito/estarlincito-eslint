@@ -1,6 +1,6 @@
 {
   "name": "@estarlincito/eslint",
-  "version": "1.8.6",
+  "version": "1.8.7",
   "description": "A customizable ESLint configuration designed to enforce consistent coding styles and best practices in JavaScript and TypeScript projects.",
   "keywords": [
     "estarlincito-eslint",
@@ -41,19 +41,8 @@
     "url": "https://estarlincito.com"
   },
   "type": "module",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.mjs"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
-      }
-    }
-  },
-  "main": "./dist/esm/index.mjs",
+  "main": "./dist/esm/index.cjs",
+  "module": "./dist/esm/index.mjs",
   "types": "./dist/esm/index.d.ts",
   "files": [
     "LICENSE",

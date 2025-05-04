@@ -1,4 +1,4 @@
 /** @type {import("eslint").Linter.Config} */
-import { baseConfig } from './dist/esm/index.mjs';
+import { pkgConfig } from './dist/esm/index.mjs';
 
-export default [...baseConfig, { ignores: ['dist'] }];
+export default pkgConfig;

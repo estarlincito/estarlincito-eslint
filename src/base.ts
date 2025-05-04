@@ -20,10 +20,11 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
   tseslint.configs.stylistic,
   eslintConfigPrettier,
   Import.flatConfigs.recommended,
-
+  {
+    ignores: ['**/node_modules/**', '**/dist/**', '**/temp/**', '**/tpm/**'],
+  },
   {
     files: ['**/*.ts', '**/*.tsx'],
-    ignores: ['node_modules'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -157,21 +158,6 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
           project: true,
         },
       },
-    },
-  },
-
-  {
-    // Force using only "dependencies" inside src/
-    files: ['src/**/*.{ts,tsx,js,jsx}'],
-    rules: {
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          devDependencies: false,
-          optionalDependencies: false,
-          peerDependencies: false,
-        },
-      ],
     },
   },
 );
