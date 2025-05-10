@@ -14,11 +14,30 @@ const unusedImports = require('eslint-plugin-unused-imports');
 const globals = require('globals');
 const tseslint = require('typescript-eslint');
 
-const baseConfig = tseslint.config(
+function _interopNamespaceDefault(e) {
+  const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
+  if (e) {
+    for (const k in e) {
+      if (k !== 'default') {
+        const d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: () => e[k]
+        });
+      }
+    }
+  }
+  n.default = e;
+  return Object.freeze(n);
+}
+
+const tseslint__namespace = /*#__PURE__*/_interopNamespaceDefault(tseslint);
+
+const baseConfig = tseslint__namespace.config(
   eslint.configs.recommended,
-  tseslint.configs.recommended,
-  tseslint.configs.strict,
-  tseslint.configs.stylistic,
+  tseslint__namespace.configs.recommended,
+  tseslint__namespace.configs.strict,
+  tseslint__namespace.configs.stylistic,
   eslintConfigPrettier,
   Import.flatConfigs.recommended,
   {
@@ -68,6 +87,14 @@ const baseConfig = tseslint.config(
       "arrow-body-style": ["warn", "as-needed"],
       "consistent-return": "error",
       eqeqeq: "error",
+      "import/no-cycle": [
+        "error",
+        {
+          allowUnsafeDynamicCyclicDependency: false,
+          ignoreExternal: true,
+          maxDepth: 2
+        }
+      ],
       "import/no-unresolved": "error",
       // check this with js files
       "max-len": ["off", { code: 80 }],
@@ -86,6 +113,17 @@ const baseConfig = tseslint.config(
       "no-param-reassign": ["warn", { props: true }],
       "no-plusplus": "warn",
       "no-redeclare": "error",
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["**/../*"],
+              message: "Use absolute imports with @alias aliases instead"
+            }
+          ]
+        }
+      ],
       "no-return-await": "error",
       "no-shadow": "error",
       "no-undef": "error",
@@ -134,6 +172,10 @@ const baseConfig = tseslint.config(
       ]
     },
     settings: {
+      "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
       "import/resolver": {
         node: true,
         typescript: {

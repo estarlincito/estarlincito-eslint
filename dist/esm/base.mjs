@@ -8,7 +8,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeys from 'eslint-plugin-sort-keys-fix';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import * as tseslint from 'typescript-eslint';
 
 const baseConfig = tseslint.config(
   eslint.configs.recommended,
@@ -64,6 +64,14 @@ const baseConfig = tseslint.config(
       "arrow-body-style": ["warn", "as-needed"],
       "consistent-return": "error",
       eqeqeq: "error",
+      "import/no-cycle": [
+        "error",
+        {
+          allowUnsafeDynamicCyclicDependency: false,
+          ignoreExternal: true,
+          maxDepth: 2
+        }
+      ],
       "import/no-unresolved": "error",
       // check this with js files
       "max-len": ["off", { code: 80 }],
@@ -82,6 +90,17 @@ const baseConfig = tseslint.config(
       "no-param-reassign": ["warn", { props: true }],
       "no-plusplus": "warn",
       "no-redeclare": "error",
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["**/../*"],
+              message: "Use absolute imports with @alias aliases instead"
+            }
+          ]
+        }
+      ],
       "no-return-await": "error",
       "no-shadow": "error",
       "no-undef": "error",
@@ -130,6 +149,10 @@ const baseConfig = tseslint.config(
       ]
     },
     settings: {
+      "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
       "import/resolver": {
         node: true,
         typescript: {

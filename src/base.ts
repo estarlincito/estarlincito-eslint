@@ -11,7 +11,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeys from 'eslint-plugin-sort-keys-fix';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import * as tseslint from 'typescript-eslint';
 
 export const baseConfig: tseslint.ConfigArray = tseslint.config(
   eslint.configs.recommended,
@@ -67,32 +67,51 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'arrow-body-style': ['warn', 'as-needed'],
       'consistent-return': 'error',
       eqeqeq: 'error',
-      'import/no-unresolved': 'error',
+      'import/no-cycle': [
+        'error',
+        {
+          allowUnsafeDynamicCyclicDependency: false,
+          ignoreExternal: true,
+          maxDepth: 2,
+        },
+      ],
 
+      'import/no-unresolved': 'error',
       // check this with js files
       'max-len': ['off', { code: 80 }],
       'no-await-in-loop': 'warn',
       'no-console': 'warn',
       'no-debugger': 'warn',
       'no-duplicate-imports': 'error',
-      'no-else-return': 'error',
 
+      'no-else-return': 'error',
       'no-eval': 'error',
       'no-extend-native': 'error',
       'no-implicit-coercion': 'warn',
+
       'no-labels': 'error',
 
       'no-lonely-if': 'warn',
 
       'no-nested-ternary': 'warn',
-
       'no-new-func': 'error',
+
       'no-param-reassign': ['warn', { props: true }],
 
       'no-plusplus': 'warn',
 
       'no-redeclare': 'error',
-
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['**/../*'],
+              message: 'Use absolute imports with @alias aliases instead',
+            },
+          ],
+        },
+      ],
       'no-return-await': 'error',
       'no-shadow': 'error',
       'no-undef': 'error',
@@ -100,6 +119,7 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'no-unused-labels': 'error',
       'no-useless-constructor': 'warn',
       'no-var': 'error',
+
       'object-shorthand': 'error',
       'padding-line-between-statements': [
         'warn',
@@ -109,6 +129,7 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       ],
 
       'prefer-arrow-callback': 'error',
+
       'prefer-destructuring': [
         'warn',
         {
@@ -116,11 +137,11 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
           object: true,
         },
       ],
-
       'prefer-template': 'error',
-
       'prettier/prettier': 'error',
+
       'safeguard/no-raw-error': 'warn',
+
       'safeguard/no-self-assignments': 'error',
 
       'safeguard/trycatch-ensurer': 'off',
@@ -128,14 +149,13 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       'simple-import-sort/exports': 'error',
 
       'simple-import-sort/imports': 'error',
-
       'sort-keys': 'off',
-
       'sort-keys-fix/sort-keys-fix': [
         'warn',
         'asc',
         { caseSensitive: false, natural: true },
       ],
+
       'spaced-comment': ['warn', 'always'],
       'unused-imports/no-unused-imports': 'error',
 
@@ -150,6 +170,10 @@ export const baseConfig: tseslint.ConfigArray = tseslint.config(
       ],
     },
     settings: {
+      'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
       'import/resolver': {
         node: true,
         typescript: {
